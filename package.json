@@ -1,0 +1,15 @@
+{
+  "name": "onboarding-servlerless-cdk-students",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "say": "cowsay \"I'm a moooodule\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cowsay": "^1.6.0"
+  }
+}
