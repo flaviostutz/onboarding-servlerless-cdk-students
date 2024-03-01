@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "say": "cowsay \"I'm a moooodule\""
+    "say": "cowsay \"I'm a moooodule.\""
   },
   "keywords": [],
   "author": "",
