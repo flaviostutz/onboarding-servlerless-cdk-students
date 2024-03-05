@@ -36,3 +36,7 @@ prereqs:
 		echo "ENV STAGE is required"; \
 		exit 1; \
 	fi
+
+run-slug:
+	node ./dist/slug.js
+
