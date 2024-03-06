@@ -37,6 +37,14 @@ prereqs:
 		exit 1; \
 	fi
 
+build-slugs: copy-cows
+	esbuild src/cow-slug.ts src/slug.ts --bundle --outdir=dist --platform=node	
+
 run-slug:
 	node ./dist/slug.js
 
+copy-cows:    
+	cp -R node_modules/cowsay/cows .
+
+run-cow-slug:
+	node ./dist/cow-slug.js
