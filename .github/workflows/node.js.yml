@@ -40,3 +40,4 @@ jobs:
         run: |
           pnpm install cowsay
           pnpm exec cowsay "CI pipeline complete!"
+        
