@@ -1,6 +1,9 @@
 import * as cowsay from 'cowsay';
 import { generateSlug } from 'random-word-slugs';
 
-let output = cowsay.say({ text: generateSlug()});
+export function showOutput(): string {
+  const output = cowsay.say({ text: generateSlug() });
+  return output;
+}
 
-console.log(output);
+showOutput();
