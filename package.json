@@ -1,10 +1,11 @@
 {
-  "name": "onboarding-servlerless-cdk-students",
+  "name": "Serverless_Flavio",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "say": "cowsay \"I'm a moooodule.\""
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"say": "cowsay \"I'm a moooodule\""
   },
   "keywords": [],
   "author": "",
