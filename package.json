@@ -1,15 +1,18 @@
 {
-  "name":"onboarding-servlerless-cdk-students",
+  "name": "onboarding-servlerless-cdk-students",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-        "say": "cowsay \"I'm a moooodule\""
+    "say": "cowsay \"I'm a moooodule\"",
+    "test": "jest",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cowsay": "^1.6.0"
+    "cowsay": "^1.6.0",
+    "random-word-slugs": "^0.1.7"
   }
 }
