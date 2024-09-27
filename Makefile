@@ -5,7 +5,7 @@ build: install prereqs
 	@set -x; STAGE=$${STAGE} pnpm exec cdk -o dist synth
 
 lint:
-	pnpm exec eslint ./src --ext .ts
+	pnpm exec eslint ./src ./cdk --ext .ts
 
 lint-fix:
 	pnpm exec eslint . --ext .ts --fix
@@ -36,3 +36,15 @@ prereqs:
 		echo "ENV STAGE is required"; \
 		exit 1; \
 	fi
+
+build-slugs: copy-cows
+	esbuild src/cow-slug.ts src/slug.ts --bundle --outdir=dist --platform=node	
+
+run-slug:
+	node ./dist/slug.js
+
+copy-cows:    
+	cp -R node_modules/cowsay/cows .
+
+run-cow-slug:
+	node ./dist/cow-slug.js
