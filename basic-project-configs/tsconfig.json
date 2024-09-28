@@ -3,9 +3,8 @@
   "compilerOptions": {
     "sourceMap": true,
     "declaration": true,
-    "declarationMap": true,
-    "outDir": "dist"
+    "declarationMap": true
   },
-  "include": ["src", "cdk", ".eslintrc.js", "jest.config.js"],
+  "include": ["src", ".eslintrc.js", "jest.config.js"],
   "exclude": ["node_modules"]
 }
