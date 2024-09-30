@@ -1,10 +1,10 @@
 SHELL := /bin/bash
 
 build:
-	pnpm install --frozen-lockfile
+	npm ci
 
 lint:
-	pnpm exec eslint ./src ./cdk --ext .ts
+	npm run lint
 
 lint-fix:
 	pnpm exec eslint . --ext .ts --fix
@@ -12,7 +12,7 @@ lint-fix:
 test: unit-tests
 
 unit-tests:
-	pnpm exec jest --verbose
+	npm run test
 
 clean:
 	rm -rf node_modules
@@ -25,7 +25,7 @@ install:
 	pnpm install --frozen-lockfile --config.dedupe-peer-dependents=false
 
 deploy:
-	pnpx sls deploy --stage ${STAGE}
+	npx sls deploy --stage ${STAGE}
 
 undeploy: prereqs
 	@set -x; pnpm exec cdk -o dist destroy -f --require-approval never
