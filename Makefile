@@ -1,10 +1,11 @@
 SHELL := /bin/bash
 
-build:
-	npm ci
+build: install prereqs
+	@# pnpm exec tsc --outDir dist
+	@set -x; STAGE=$${STAGE} pnpm exec cdk -o dist synth
 
 lint:
-	npm run lint
+	pnpm exec eslint ./src ./cdk --ext .ts
 
 lint-fix:
 	pnpm exec eslint . --ext .ts --fix
@@ -12,7 +13,7 @@ lint-fix:
 test: unit-tests
 
 unit-tests:
-	npm run test
+	pnpm exec jest --verbose
 
 clean:
 	rm -rf node_modules
@@ -24,8 +25,8 @@ install:
 	corepack enable
 	pnpm install --frozen-lockfile --config.dedupe-peer-dependents=false
 
-deploy:
-	npx sls deploy --stage ${STAGE}
+deploy: prereqs
+	@set -x; pnpm exec cdk -o dist deploy --method-direct --require-approval never
 
 undeploy: prereqs
 	@set -x; pnpm exec cdk -o dist destroy -f --require-approval never
