@@ -1,40 +1,35 @@
-name: CDK Deploy
+name: CI
 
 on:
   push:
     branches:
-      - main  
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  aws_cdk:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out code
+      - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 2
 
-      - name: Setup Node.js environment
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 20  
-          cache: "pnpm"  # Use pnpm caching
+          node-version: '20'
+          cache: 'pnpm'
 
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --config.dedupe-peer-dependents=false
+        run: pnpm install --frozen-lockfile
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@master
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: "eu-central-1"  
+      - name: Build
+        run: make build
 
-      - name: Run Makefile to build and deploy
-        env:
-          STAGE: production  
-        run: make deploy  
+      - name: Deploy
+        run: make deploy
