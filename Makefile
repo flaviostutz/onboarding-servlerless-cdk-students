@@ -1,8 +1,7 @@
 SHELL := /bin/bash
 
-build: install prereqs
-	@# pnpm exec tsc --outDir dist
-	@set -x; STAGE=$${STAGE} pnpm exec cdk -o dist synth
+build:
+	pnpm install --frozen-lockfile
 
 lint:
 	pnpm exec eslint ./src ./cdk --ext .ts
@@ -25,8 +24,8 @@ install:
 	corepack enable
 	pnpm install --frozen-lockfile --config.dedupe-peer-dependents=false
 
-deploy: prereqs
-	@set -x; pnpm exec cdk -o dist deploy --method-direct --require-approval never
+deploy:
+	pnpx sls deploy --stage ${STAGE}
 
 undeploy: prereqs
 	@set -x; pnpm exec cdk -o dist destroy -f --require-approval never
