@@ -1,5 +1,4 @@
 name: Deploy Lambda Functions
-
 on:
   pull_request:
     branches:
