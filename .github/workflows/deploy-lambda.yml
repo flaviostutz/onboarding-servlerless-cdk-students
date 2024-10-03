@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
     branches:
-    - main
+    - task-12
 
 jobs:
   build:
