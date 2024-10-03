@@ -1,4 +1,5 @@
 name: Deploy Lambda Functions
+
 on:
   pull_request:
     branches:
@@ -18,6 +19,9 @@ jobs:
       with:
         node-version: '20' 
         cache: 'pnpm'
+
+    - name: Install pnpm
+      run: npm install -g pnpm
 
     - name: Install Dependencies
       run: |
