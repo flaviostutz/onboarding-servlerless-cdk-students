@@ -46,7 +46,7 @@ export class MyApiStack extends cdk.Stack {
       bundling: {
         minify: true,
       },
-      depsLockFilePath: '../../pnpm-lock.yaml',
+      depsLockFilePath: '../pnpm-lock.yaml',
     });
 
     // Lambda function to handle GET /person/{id}
@@ -57,7 +57,7 @@ export class MyApiStack extends cdk.Stack {
       bundling: {
         minify: true,
       },
-      depsLockFilePath: '../../pnpm-lock.yaml',
+      depsLockFilePath: '../pnpm-lock.yaml',
     });
 
     // GET /person route
