@@ -39,5 +39,5 @@ jobs:
       
       - name: Run Makefile to build and deploy
         env:
-          STAGE: production  
+          STAGE: env
         run: make deploy
