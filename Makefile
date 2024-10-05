@@ -26,7 +26,7 @@ install:
 	pnpm install --frozen-lockfile --config.dedupe-peer-dependents=false
 
 deploy: prereqs
-	@set -x; pnpm exec cdk -o dist deploy --app 'ts-node bin/cdk.ts' --method-direct --require-approval never
+	@set -x; pnpm exec cdk -o dist deploy --app 'ts-node cdk/bin/cdk.ts' --method-direct --require-approval never
 
 undeploy: prereqs
 	@set -x; pnpm exec cdk -o dist destroy -f --require-approval never
