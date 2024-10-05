@@ -1,5 +1,3 @@
-import * as path from 'path';
-
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
@@ -48,7 +46,7 @@ export class MyApiStack extends cdk.Stack {
       bundling: {
         minify: true,
       },
-      depsLockFilePath: path.join(__dirname, '../pnpm-lock.yaml'),
+      depsLockFilePath: 'pnpm-lock.yaml',
     });
 
     // Lambda function to handle GET /person/{id}
@@ -59,7 +57,7 @@ export class MyApiStack extends cdk.Stack {
       bundling: {
         minify: true,
       },
-      depsLockFilePath: path.join(__dirname, '../pnpm-lock.yaml'),
+      depsLockFilePath: 'pnpm-lock.yaml',
     });
 
     // GET /person route
