@@ -25,7 +25,8 @@
     ]
   },
   "include": [
-    "cdk/**/*"
+    "cdk/**/*",
+    "lib/**/*"
   ],
   "exclude": [
     "node_modules",
