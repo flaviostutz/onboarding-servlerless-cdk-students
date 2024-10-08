@@ -3,7 +3,8 @@ name: CI
 on:
   pull_request:
     branches:
-    - task-12
+      - task-12
+
 
 jobs:
   build:
