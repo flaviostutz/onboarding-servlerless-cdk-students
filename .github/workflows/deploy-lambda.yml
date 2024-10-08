@@ -1,25 +1,26 @@
-name: CDK Deploy
+name: CI
 
 on:
-  push:
+  pull_request:
     branches:
-      - task-12 
+      - task-12
+
 
 jobs:
-  aws_cdk:
+  build:
+    name: Build and Test AWS CDK Typescript Stack
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 2
+      - name: Initiated By User
+        run: echo $GITHUB_ACTOR
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2
+      - name: Check Out Code
+        uses: actions/checkout@v3.1.0
+
+      - name: Install Node
+        uses: actions/setup-node@v3.5.0
         with:
-          node-version: 20  
-          cache: "pnpm" 
+          node-version: '20'
 
       - name: Enable Corepack
         run: corepack enable
@@ -31,13 +32,13 @@ jobs:
         run: pnpm install --frozen-lockfile --config.dedupe-peer-dependents=false
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@master
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: "eu-central-1"  
-
+          aws-region: eu-central-1 
+          
       - name: Run Makefile to build and deploy
         env:
-          STAGE: production  
-        run: make deploy  
+          STAGE: env
+        run: make deploy

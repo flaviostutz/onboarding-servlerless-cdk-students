@@ -40,24 +40,24 @@ export class MyApiStack extends cdk.Stack {
 
     // Lambda function to handle GET /person
     const getAllPersonsLambda = new NodejsFunction(this, 'GetAllPersonsLambda', {
-      entry: 'lambda/getAllPersons.ts',
+      entry: 'cdk/lambda/getAllPersons.ts',
       handler: 'handler',
       runtime: lambda.Runtime.NODEJS_18_X,
       bundling: {
         minify: true,
       },
-      depsLockFilePath: '../pnpm-lock.yaml',
+      depsLockFilePath: 'pnpm-lock.yaml',
     });
 
     // Lambda function to handle GET /person/{id}
     const getPersonByIdLambda = new NodejsFunction(this, 'GetPersonByIdLambda', {
-      entry: 'lambda/getPersonById.ts',
+      entry: 'cdk/lambda/getPersonById.ts',
       handler: 'handler',
       runtime: lambda.Runtime.NODEJS_18_X,
       bundling: {
         minify: true,
       },
-      depsLockFilePath: '../pnpm-lock.yaml',
+      depsLockFilePath: 'pnpm-lock.yaml',
     });
 
     // GET /person route
