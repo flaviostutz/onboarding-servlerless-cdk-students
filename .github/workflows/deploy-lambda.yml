@@ -3,7 +3,7 @@ name: CDK Deploy
 on:
   push:
     branches:
-      - main 
+      - task-12 
 
 jobs:
   aws_cdk:
