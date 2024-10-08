@@ -25,8 +25,12 @@ install:
 	corepack enable
 	pnpm install --frozen-lockfile --config.dedupe-peer-dependents=false
 
-deploy: prereqs
-	@set -x; pnpm exec cdk -o dist deploy --method-direct --require-approval never
+bootstrap:
+	@set -x; pnpm exec cdk bootstrap aws://$$(aws sts get-caller-identity --query Account --output text)/eu-central-1 --app 'ts-node ./cdk/bin/cdk.ts'
+
+
+deploy: prereqs bootstrap
+	@set -x; pnpm exec cdk -o dist deploy --app 'ts-node ./cdk/bin/cdk.ts' --method-direct --require-approval never
 
 undeploy: prereqs
 	@set -x; pnpm exec cdk -o dist destroy -f --require-approval never

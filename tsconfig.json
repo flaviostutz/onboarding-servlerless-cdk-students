@@ -6,6 +6,6 @@
     "declarationMap": true,
     "outDir": "dist"
   },
-  "include": ["src", "cdk", ".eslintrc.js", "jest.config.js"],
+  "include": ["cdk"],
   "exclude": ["node_modules"]
 }
