@@ -1,10 +1,12 @@
 {
-  "extends": "@tsconfig/node16/tsconfig.json",
   "compilerOptions": {
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src", ".eslintrc.js", "jest.config.js"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }
