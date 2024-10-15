@@ -1,8 +1,10 @@
+// eslint-disable-next-line
 import { APIGatewayProxyEvent } from 'aws-lambda';
 
+// eslint-disable-next-line
 import { create } from '../handlers/users/create';
 
-export const handler = async (
+const handler = async (
   event: APIGatewayProxyEvent,
 ): Promise<{ statusCode: number; body: string }> => {
   try {
@@ -16,3 +18,6 @@ export const handler = async (
     };
   }
 };
+
+// eslint-disable-next-line import/no-commonjs
+module.exports = { handler };

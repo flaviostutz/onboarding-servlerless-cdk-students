@@ -35,6 +35,12 @@ export class MyApiStack extends cdk.Stack {
         allowMethods: Cors.ALL_METHODS,
       },
       apiKeySourceType: ApiKeySourceType.HEADER,
+      deployOptions: {
+        metricsEnabled: true,
+        dataTraceEnabled: true,
+        tracingEnabled: true,
+        stageName: 'dev',
+      },
     });
 
     const apiKey = new ApiKey(this, 'ApiKey');
@@ -54,6 +60,7 @@ export class MyApiStack extends cdk.Stack {
     const createUserLambda = new NodejsFunction(this, 'CreateUserLambda', {
       entry: 'cdk/resources/endpoints/createUser.ts',
       handler: 'handler',
+      tracing: lambda.Tracing.ACTIVE,
       runtime: lambda.Runtime.NODEJS_18_X,
       bundling: {
         minify: true,
@@ -68,6 +75,7 @@ export class MyApiStack extends cdk.Stack {
     const getAllPersonsLambda = new NodejsFunction(this, 'GetAllPersonsLambda', {
       entry: 'cdk/resources/endpoints/getAllPersons.ts',
       handler: 'handler',
+      tracing: lambda.Tracing.ACTIVE,
       runtime: lambda.Runtime.NODEJS_18_X,
       bundling: {
         minify: true,
@@ -82,6 +90,7 @@ export class MyApiStack extends cdk.Stack {
     const getPersonByIdLambda = new NodejsFunction(this, 'GetPersonByIdLambda', {
       entry: 'cdk/resources/endpoints/getPersonById.ts',
       handler: 'handler',
+      tracing: lambda.Tracing.ACTIVE,
       runtime: lambda.Runtime.NODEJS_18_X,
       bundling: {
         minify: true,
