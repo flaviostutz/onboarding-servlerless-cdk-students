@@ -5,7 +5,7 @@ build: install prereqs
 	@set -x; STAGE=$${STAGE} pnpm exec cdk -o dist synth
 
 lint:
-	pnpm exec eslint ./src ./cdk --ext .ts
+	pnpm exec eslint ./cdk --ext .ts
 
 lint-fix:
 	pnpm exec eslint . --ext .ts --fix
