@@ -12,3 +12,4 @@ function generateRandomSlugs(count) {
 // Script para gerar e imprimir as frases
 var slugs = generateRandomSlugs(10);
 console.log(slugs);
+

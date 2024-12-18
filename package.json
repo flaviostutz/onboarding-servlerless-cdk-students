@@ -2,17 +2,20 @@
   "name": "onboarding-servlerless-cdk-students",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "slug.js",
   "scripts": {
     "say": "cowsay \"I'm a moooodule\"",
     "test": "jest",
-    "build": "tsc"
+    "build": "esbuild src/slug.ts --bundle --outfile=dist/slug.js",
+    "cow-slug": "node -e \"console.log(require('cowsay').say({ text: require('random-word-slugs').generateSlug() }))\""
+
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cowsay": "^1.6.0",
-    "random-word-slugs": "^0.1.7"
+    "random-word-slugs": "^0.1.7",
+    "esbuild": "^0.17.0"
   }
 }
